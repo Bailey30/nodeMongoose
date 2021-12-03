@@ -9,37 +9,37 @@ const { addMovie, listMovies, deleteOne, updateOne, searchTerm, addActor, search
 const app = async (args) => {
 
     switch (process.argv[2]) {
-        case "add":
+        case "add": // add a document
             addMovie({ title: args.title, actor: args.actor, rating: args.rating })
             break;
-        case "list":
+        case "list": // list all documents
             listMovies()
             break;
-        case "deleteone":
+        case "deleteone": // delete one document
             deleteOne({ title: args.title })
             break;
-        case "updateone":
+        case "updateone":  //update any value
             updateOne({ title: args.title }, { [args.key]: args.value })
             break;
-        case "searchterm":
+        case "searchterm": // search text indexes
             searchTerm(args.term)
             break;
-        case "addactor":
+        case "addactor": // add to the actor array
             const title = { title: args.title }
             const actor = { actor: args.actor }
             addActor({ ...title, ...actor })
             break;
-        case "removeactor":
+        case "removeactor": // remove from the actor array
             const removeActorObj = {
                 title: args.title,
                 actor: args.actor
             }
             removeActor(removeActorObj)
             break;
-        case "searchmovie":
+        case "searchmovie": // search by movie title
             searchMovie({ title: args.title })
             break;
-        case "searchrating":
+        case "searchrating": // search by movie rating
             searchByRating(args.rating)
             break;
         default:
