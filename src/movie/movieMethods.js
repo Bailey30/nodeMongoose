@@ -30,7 +30,7 @@ exports.deleteOne = async (movieObj) => {
 }
 exports.updateOne = async (movieObj, movieObj2) => {
     try {
-        const movie = await Movie.updateOne(movieObj, movieObj2)
+        const movie = await Movie.updateOne(movieObj, movieObj2,{upsert: true})
         console.log(movie.nModified);
         console.log(Object.keys(movieObj2));
         mongoose.connection.close()
